@@ -30,7 +30,7 @@ public class VehicleTasks {
     @Scheduled(cron="9/10 * * * * *")
     public void deleteVehicle(){
         String url = "http://localhost:8080/deletevehicle/{id}";
-        template.delete(url,rand.nextInt(rand.nextInt(40)+40));
+        template.delete(url,rand.nextInt(rand.nextInt(30)));
         System.out.println("Vehicle Deleted...");
     }
 
@@ -40,7 +40,7 @@ public class VehicleTasks {
         Vehicle vehicle = new Vehicle(makeAndModel[rand.nextInt(makeAndModel.length)]+" *UPDATED*",
                 rand.nextInt((maxYear - minYear) + 1) + minYear,
                 rand.nextInt((maxPrice - minPrice) + 1) + minPrice);
-        vehicle.setId(rand.nextInt(40)+40);
+        vehicle.setId(rand.nextInt(30));
         template.put(url, vehicle, Vehicle.class);
         System.out.println("Vehicle Updated...");
     }
